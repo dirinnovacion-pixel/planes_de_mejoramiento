@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retroalimentación Planes 2025–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Domine:wght@500;700&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: una columna de lectura (máx. 60rem); matriz de estado arriba, luego patrones, buenas prácticas y una ficha por área con antes → propuesta */
+:root{
+  --bg:#F6F5F1; --surface:#FFFFFF; --ink:#1F2A44; --muted:#556072; --line:#D9DEE5;
+  --accent:#2F6690; --accent-soft:#E3EDF5; --warm:#9A4F10; --warm-soft:#F8EBDD;
+  --ok:#1F6E8C; --ok-bg:#DDEEF5; --fix:#8A5A00; --fix-bg:#FBEFCF; --miss:#A2352A; --miss-bg:#F8E0DC;
+  --display:'Domine', Georgia, serif; --body:'Nunito Sans', 'Segoe UI', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141A26; --surface:#1C2433; --ink:#E8ECF2; --muted:#A5B0C0; --line:#2E394B;
+  --accent:#7FB3DA; --accent-soft:#1F3246; --warm:#E8A566; --warm-soft:#3A2A1A;
+  --ok:#8CC8E0; --ok-bg:#16343F; --fix:#F0C766; --fix-bg:#3A3016; --miss:#F09A8E; --miss-bg:#40211D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141A26; --surface:#1C2433; --ink:#E8ECF2; --muted:#A5B0C0; --line:#2E394B;
+  --accent:#7FB3DA; --accent-soft:#1F3246; --warm:#E8A566; --warm-soft:#3A2A1A;
+  --ok:#8CC8E0; --ok-bg:#16343F; --fix:#F0C766; --fix-bg:#3A3016; --miss:#F09A8E; --miss-bg:#40211D; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;padding:0 16px}
+.wrap{max-width:60rem;margin:0 auto;padding-block:48px 80px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.9rem,4.5vw,2.8rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.2rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--warm)}
+header{display:flex;flex-direction:column;gap:14px}
+.lede{color:var(--muted);max-width:44rem;font-size:1.08rem}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:.92rem}
+section{display:flex;flex-direction:column;gap:20px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.sec-head p{color:var(--muted)}
+/* status matrix */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.95rem}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:800}
+tr:last-child td{border-bottom:none}
+td a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line)}
+td a:hover,td a:focus-visible{border-color:var(--accent);outline:none}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.ok{color:var(--ok);background:var(--ok-bg)} .fix{color:var(--fix);background:var(--fix-bg)} .miss{color:var(--miss);background:var(--miss-bg)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.88rem;color:var(--muted);align-items:center}
+/* patterns */
+.patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:14px}
+.pattern{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pattern h3{font-size:1.02rem}
+.pattern p{font-size:.94rem;color:var(--muted)}
+.pattern .who{font-size:.84rem;color:var(--ink);font-weight:700}
+.goods{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.good{display:grid;grid-template-columns:11rem 1fr;gap:6px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.good b{font-family:var(--display);font-weight:700}
+.good p{color:var(--muted);min-width:0}
+/* area cards */
+nav.jump{display:flex;flex-wrap:wrap;gap:8px}
+nav.jump a{font-size:.88rem;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:4px 12px;border-radius:999px;text-decoration:none}
+nav.jump a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.area{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px clamp(18px,4vw,36px);display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px}
+.area-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px}
+.area-head .tests{font-size:.86rem;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px}
+.cols > div{min-width:0;display:flex;flex-direction:column;gap:6px}
+.label{font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+ul{margin:0;padding-left:1.15rem;display:flex;flex-direction:column;gap:4px}
+li{font-size:.96rem}
+.rewrite{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rw-title{background:var(--accent-soft);padding:10px 16px;font-size:.86rem;font-weight:700;color:var(--ink)}
+.rw-row{display:grid;grid-template-columns:7.5rem 1fr 1fr;border-top:1px solid var(--line)}
+.rw-row > *{padding:12px 16px;min-width:0;font-size:.93rem}
+.rw-row .k{font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rw-row .before{color:var(--muted);background:color-mix(in srgb,var(--bg) 60%,transparent)}
+.rw-row .before::before{content:"Hoy · ";font-weight:700;color:var(--miss)}
+.rw-row .after::before{content:"Propuesta · ";font-weight:700;color:var(--ok)}
+.rw-head{display:grid;grid-template-columns:7.5rem 1fr 1fr;border-top:1px solid var(--line);font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rw-head > *{padding:8px 16px}
+.note{font-size:.88rem;color:var(--muted)}
+.callout{background:var(--warm-soft);border-radius:10px;padding:16px 20px;font-size:.95rem}
+.callout b{color:var(--warm)}
+footer{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding-top:20px}
+@media (max-width:720px){
+  .cols{grid-template-columns:1fr}
+  .good{grid-template-columns:1fr}
+  .rw-head{display:none}
+  .rw-row{grid-template-columns:1fr}
+  .rw-row .k{padding-bottom:0}
+}
+/* resultados por asignatura */
+.chip.none{color:var(--muted);background:var(--accent-soft)}
+.res-table{min-width:560px}
+.res-table td:nth-child(3),.res-table td:nth-child(4){font-variant-numeric:tabular-nums}
+.adjust{display:flex;flex-direction:column;gap:6px}
+.adjust ol{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:6px}
+.adjust li{font-size:.96rem}
+.newgoal{background:var(--accent-soft);border-radius:10px;padding:14px 18px;font-size:.95rem;display:flex;flex-direction:column;gap:4px}
+.priority{font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:2px 10px;border-radius:999px}
+.p-high{color:var(--miss);background:var(--miss-bg)} .p-mid{color:var(--fix);background:var(--fix-bg)} .p-low{color:var(--ok);background:var(--ok-bg)}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Revisión de planes de mejoramiento · año 2025–2026</p>
+  <h1>Objetivos, metas e indicadores por área</h1>
+  <p class="lede">Revisamos los 12 planes entregados, con foco en tres columnas: el <b>¿Qué?</b> (objetivo), la <b>meta</b> y el <b>indicador</b>. Para cada área hay fortalezas, ajustes y una propuesta de redacción que sirve de modelo para el plan 2026–2027.</p>
+  <div class="meta-row"><span>12 planes revisados</span><a href="#resultados" style="color:var(--accent);font-weight:700">Ajustes según los resultados de las pruebas</a><span>Formato de 6 columnas</span><span>Las cifras entre [corchetes] las define cada área</span></div>
+</header>
+
+<section id="estado">
+  <div class="sec-head">
+    <p class="eyebrow">Vista general</p>
+    <h2>Estado de cada plan</h2>
+    <p>Qué tan bien cumple cada columna los criterios de la capacitación.</p>
+  </div>
+  <div class="legend">
+    <span class="chip ok">Bien</span><span>cumple el criterio</span>
+    <span class="chip fix">Ajustar</span><span>está, pero con problemas de redacción o coherencia</span>
+    <span class="chip miss">Falta</span><span>vacía o no corresponde a la columna</span>
+  </div>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Área</th><th>Objetivo</th><th>Meta</th><th>Indicador</th><th>Evaluación</th></tr>
+    <tr><td><a href="#matematicas">Matemáticas</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td><td><span class="chip miss">Falta</span></td></tr>
+    <tr><td><a href="#ciencias">Ciencias</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td><td><span class="chip ok">Bien</span></td><td><span class="chip miss">Falta</span></td></tr>
+    <tr><td><a href="#ingles">Inglés</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td><td><span class="chip ok">Bien</span></td></tr>
+    <tr><td><a href="#learning-center">Learning Center</a></td><td><span class="chip ok">Bien</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td></tr>
+    <tr><td><a href="#religion">Religión, Ética, Filosofía y Pastoral</a></td><td><span class="chip ok">Bien</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td><td><span class="chip ok">Bien</span></td></tr>
+    <tr><td><a href="#preescolar">Preescolar</a></td><td><span class="chip ok">Bien</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip miss">Falta</span></td></tr>
+    <tr><td><a href="#elementary">Elementary</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td></tr>
+    <tr><td><a href="#frances">Francés</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip miss">Falta</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td></tr>
+    <tr><td><a href="#lengua">Lengua Castellana</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip miss">Falta</span></td><td><span class="chip fix">Ajustar</span></td></tr>
+    <tr><td><a href="#dyt">Design &amp; Technology</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td><td><span class="chip miss">Falta</span></td><td><span class="chip miss">Falta</span></td></tr>
+    <tr><td><a href="#educacion-fisica">Educación Física</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip miss">Falta</span></td></tr>
+    <tr><td><a href="#artes">Artes</a></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip miss">Falta</span></td><td><span class="chip fix">Ajustar</span></td><td><span class="chip ok">Bien</span></td></tr>
+  </table>
+  </div>
+</section>
+
+<section id="patrones">
+  <div class="sec-head">
+    <p class="eyebrow">Lo que se repite</p>
+    <h2>Seis problemas comunes</h2>
+    <p>Aparecen en varias áreas; conviene trabajarlos con todos en la capacitación.</p>
+  </div>
+  <div class="patterns">
+    <div class="pattern"><h3>El objetivo está escrito como meta</h3><p>“Aumentar 1–2 puntos en Saber 11°” o “Obtener 65 puntos” son metas. El objetivo dice qué capacidad se fortalece.</p><p class="who">Matemáticas, Inglés, Lengua, Ciencias</p></div>
+    <div class="pattern"><h3>La meta no coincide con el indicador</h3><p>Una cifra en la meta y otra en el indicador: 60% vs. 70%, 0,2 vs. 2 puntos, 50% vs. 100%.</p><p class="who">Matemáticas, Inglés, Lengua, Preescolar, Elementary</p></div>
+    <div class="pattern"><h3>Sin línea base explícita</h3><p>“Comparado con 2024–2025” sin decir cuál fue el resultado. La meta debe decir de dónde parte.</p><p class="who">Inglés, Ciencias (Saber), Educación Física, Artes, Elementary</p></div>
+    <div class="pattern"><h3>Indicador sin fórmula</h3><p>La columna trae solo un título (“Completion Rate:”), un enlace o el resultado obtenido, o la fórmula está invertida.</p><p class="who">Design &amp; Technology, Lengua, Preescolar</p></div>
+    <div class="pattern"><h3>Se mide la actividad, no el aprendizaje</h3><p>“Retos realizados ÷ planeados” muestra que se cumplió la tarea, no que las estudiantes mejoraron.</p><p class="who">Educación Física, Artes, Religión (filas de gestión)</p></div>
+    <div class="pattern"><h3>Evaluación vacía</h3><p>La columna que cierra el ciclo no tiene resultado, comparación con la meta ni ajustes.</p><p class="who">Matemáticas, Ciencias, D&amp;T, Educación Física, Preescolar</p></div>
+  </div>
+  <div class="callout"><b>Dato personal.</b> Un plan incluye nombres completos de estudiantes con sus resultados. En el plan basta con cifras agregadas (“1 estudiante obtuvo DALF C1”); los nombres van en registros internos del área.</div>
+</section>
+
+<section id="buenas">
+  <div class="sec-head">
+    <p class="eyebrow">Para replicar</p>
+    <h2>Buenas prácticas que ya existen en el colegio</h2>
+  </div>
+  <div class="goods">
+    <div class="good"><b>Ciencias</b><p>Indicador frente a un referente mundial: diferencia entre el % de estudiantes A*–C del colegio y el del mundo, con línea base (−11 puntos) y meta (−9).</p></div>
+    <div class="good"><b>Matemáticas</b><p>Serie histórica de Saber 11° desde 2016 como línea base, cronograma por meses y varios indicadores de resultado y de proceso (simulacros).</p></div>
+    <div class="good"><b>Francés</b><p>Evaluación por competencia del DELF (PE, PO, CE, CO) comparando la sesión 2025 con la 2026: se ve exactamente dónde mejoró y dónde no.</p></div>
+    <div class="good"><b>Artes</b><p>La evaluación reporta el % de cumplimiento (“2 de 3 eventos, 66,7%”) y reconoce lo que no se logró.</p></div>
+    <div class="good"><b>Learning Center</b><p>Separa indicador e impacto en la misma columna y registra con honestidad lo no logrado y el ajuste.</p></div>
+    <div class="good"><b>Religión, Ética, Filosofía y Pastoral</b><p>Sin prueba externa, mide aprendizaje con una rúbrica común de pensamiento crítico, escribe cada indicador como fórmula y reporta el resultado por sección (Elementary, Middle, High). Es el modelo para las áreas sin prueba externa.</p></div>
+    <div class="good"><b>Inglés</b><p>Cada objetivo tiene prueba externa (Saber, Checkpoint, IELTS, IGCSE) y la columna de evaluación dice cómo se comparará.</p></div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="sec-head">
+    <p class="eyebrow">Ficha por área</p>
+    <h2>Retroalimentación y propuesta de redacción</h2>
+    <p>Cada propuesta toma un objetivo del plan del área como ejemplo. La misma lógica aplica a sus demás filas.</p>
+  </div>
+  <nav class="jump" aria-label="Ir a un área">
+    <a href="#matematicas">Matemáticas</a><a href="#ciencias">Ciencias</a><a href="#ingles">Inglés</a><a href="#learning-center">Learning Center</a><a href="#religion">Religión</a><a href="#preescolar">Preescolar</a><a href="#elementary">Elementary</a><a href="#frances">Francés</a><a href="#lengua">Lengua Castellana</a><a href="#dyt">Design &amp; Technology</a><a href="#educacion-fisica">Educación Física</a><a href="#artes">Artes</a>
+  </nav>
+
+  <article class="area" id="matematicas">
+    <div class="area-head"><h3>Matemáticas</h3><span class="tests">Saber 11° · Checkpoint Primary · IGCSE 0580</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Histórico de Saber 11° 2016–2025 como línea base.</li><li>Cronogramas por mes y responsables claros.</li><li>Indicadores con referente: brecha con el promedio de Colombia y con el mundo.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Los objetivos de Saber y Checkpoint son metas (“Aumentar 1–2 puntos”).</li><li>Varias cifras por meta: IGCSE dice 60% en la meta y 70% en el indicador; Saber dice “mantenerse o subir 1 o 2” y luego “+2+1”. Elegir una.</li><li>Columna de evaluación vacía.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de Saber 11° Matemáticas</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Aumentar 1–2 puntos el promedio en SABER 11° matemáticas.</p><p class="after">Fortalecer el razonamiento y la resolución de problemas de las estudiantes de 10° a 12°, evaluados en Saber 11° Matemáticas.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Mantenerse o subir 1 o 2 puntos en SABER 11° matemáticas marzo 2026.</p><p class="after">En Saber 11° de marzo de [año], el promedio de Matemáticas pasa de 71 (2025) a [72] puntos y el [85]% de las estudiantes queda en niveles 3 y 4.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Puntaje promedio; diferencia respecto a 2025 (meta: +2+1); % en satisfactorio y avanzado (meta: 85%).</p><p class="after">Promedio del colegio en Matemáticas (reporte ICFES) − promedio del año anterior. (N.º de estudiantes en niveles 3–4 ÷ N.º de evaluadas) × 100.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="ciencias">
+    <div class="area-head"><h3>Ciencias</h3><span class="tests">Saber 11° · IGCSE Environmental Management · Checkpoint</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Mejor indicador del colegio: diferencia con el % mundial de A*–C, con línea base y meta.</li><li>Usa simulacros como indicador de proceso (incremento del 1.er al 3.er simulacro).</li><li>Acciones con umbrales precisos para refuerzo (&lt; 35, &lt; 40 puntos).</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>“Mejorar los resultados de las pruebas” es un resultado; nombrar la competencia.</li><li>La meta de Saber (promedio 66) no dice el punto de partida.</li><li>El orden de columnas cambia (indicador antes que meta); usar el formato común.</li><li>Definir el signo: si la fórmula es % mundo − % colegio, la brecha actual es +11, no −11.</li><li>Evaluación vacía.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de Saber 11° Ciencias Naturales</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Mejorar los resultados de las pruebas saber 11 -2026.</p><p class="after">Fortalecer las competencias de indagación y explicación de fenómenos, en especial en Física, de las estudiantes de 11° y 12°.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">% incremento = 8%. Promedio del área = 66.</p><p class="after">En Saber 11° [año], el promedio de Ciencias Naturales pasa de [línea base] a 66 puntos, y el promedio de los simulacros sube 8% entre el 1.º y el 3.º.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">% de incremento del primer al tercer simulacro; resultado promedio del área en las pruebas saber.</p><p class="after">Promedio del colegio en Ciencias Naturales (ICFES). Proceso: (promedio simulacro 3 − simulacro 1) ÷ simulacro 1 × 100.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="ingles">
+    <div class="area-head"><h3>Inglés</h3><span class="tests">Saber 11° · Checkpoint · IELTS · IGCSE ESL · AS Level</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Todas las metas tienen cifra, fecha y prueba.</li><li>Indicadores escritos como diferencia entre años.</li><li>Columna de evaluación completa en la segunda hoja.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Hay dos hojas con cifras distintas (IGCSE: 0,2 vs. 2 puntos porcentuales). Dejar una sola versión.</li><li>Los objetivos incluyen la meta (“by +0.1 points”).</li><li>Falta el valor de la línea base 2024–2025.</li><li>“Perfect scores increase by 6%”: aclarar si son puntos porcentuales.</li><li>IELTS se reporta en bandas: indicar la banda equivalente a C2.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de Primary Checkpoint</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">To improve Use of English results in Primary Checkpoint by +0.1 points.</p><p class="after">Strengthen students’ accurate use of grammar in context (Use of English strand) from Primary to 7th grade.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Average Use of English strand increases by +0.1 compared to 2024–2025.</p><p class="after">In the October [year] Primary Checkpoint, the Use of English strand average rises from [baseline] to [baseline + 0.1].</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Checkpoint Use of English strand score difference between 2024–2025 and 2025–2026.</p><p class="after">Use of English strand average this year − strand average last year (Cambridge report). Process: average score in the twice-per-term formative checks.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="learning-center">
+    <div class="area-head"><h3>Learning Center</h3><span class="tests">Tamizajes · altas capacidades · planes de adecuaciones</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Objetivos bien redactados, con verbo y foco claro.</li><li>Separa indicador e impacto.</li><li>Evaluación honesta: registra lo no logrado y el ajuste.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Meta e indicador se mezclan: “50% de estudiantes atendidas/100% de las detectadas” es a la vez meta y fórmula.</li><li>“Durante todo el año” y “Anualmente”: poner fechas de corte.</li><li>La fórmula debe mostrar numerador y denominador.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de altas capacidades</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Implementar políticas para estudiantes con altas capacidades.</p><p class="after">Implementar políticas de atención para estudiantes con altas capacidades en todas las áreas.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Visibilizar y atender las necesidades… 50% de estudiantes atendidas/100% de las detectadas.</p><p class="after">A junio de [año], el 50% de las estudiantes identificadas con altas capacidades participa en al menos una estrategia de atención.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">50% de estudiantes atendidas/100% de las detectadas. Impacto: 90% de los docentes reportan aplicar las políticas.</p><p class="after">(N.º de estudiantes con altas capacidades atendidas ÷ N.º identificadas) × 100. Impacto: % de docentes que aplican las políticas (encuesta de [mes]).</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="religion">
+    <div class="area-head"><h3>Religión, Ética, Filosofía y Pastoral</h3><span class="tests">Sin prueba externa · rúbrica común de pensamiento crítico</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>El primer objetivo es de aprendizaje y se mide con una rúbrica común, sin depender de una prueba externa.</li><li>Todos los indicadores están escritos como fórmula, con numerador y denominador.</li><li>Evaluación completa, con cifras por sección (96,5% Elementary, 86,1% Middle, 96,6% High) y reconoce lo no cumplido.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>En la primera fila la meta y el indicador están cruzados: en Meta está la actividad (“una actividad al periodo”) y la meta real (75%) quedó en Indicador.</li><li>La meta del 75% quedó muy por debajo del resultado (86–97%): con esta línea base, subirla.</li><li>Las filas de preescolar, eucaristías y ética aplicada miden implementación; agregar en el impacto qué cambia en las estudiantes.</li><li>“Durante todo el año” y “en el total de las clases”: poner periodos. Filosofía no aplicó la actividad.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de comprensión lectora y pensamiento crítico</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Desarrollar en los estudiantes habilidades de comprensión lectora y pensamiento crítico.</p><p class="after">Sin cambio: el objetivo es claro. La “actividad por periodo” pasa a la columna ¿Cómo?</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Una actividad de pensamiento crítico al período en cada uno de los grados desde 2°.</p><p class="after">A junio de [año], Middle pasa de 86,1% a [90]% de estudiantes con desempeño Alto o Superior en la rúbrica; Elementary y High se mantienen en [95]% o más, incluida Filosofía.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Que el 75% de las estudiantes obtengan Alto o superior… (con nota 3.0 / total evaluados) × 100.</p><p class="after">(N.º de estudiantes con nota ≥ 3.0 en la rúbrica de pensamiento crítico ÷ N.º de evaluadas) × 100, por sección y asignatura.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="preescolar">
+    <div class="area-head"><h3>Preescolar</h3><span class="tests">IEYC · perfiles · evaluaciones de literacy y numeracy</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Objetivos claros y con productos concretos.</li><li>Fechas de entrega definidas (junio y agosto de 2026).</li><li>Acciones en secuencia lógica.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Las fórmulas están invertidas: “(Number of grades / profiles completed) × 50%” debe ser completados ÷ total × 100.</li><li>La meta dice 50% y el indicador 100%.</li><li>Los objetivos son de producto; agregar uno de aprendizaje con las nuevas evaluaciones.</li><li>Evaluación vacía.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de perfiles por grado</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Redefine and validate the student profiles for each grade level…</p><p class="after">Sin cambio: el objetivo es claro.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">50% of grades have an updated grade profile.</p><p class="after">By June [year], 4 of 4 grades (K3, K4, K5, 1st) have a validated profile shared with the preschool team.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">(Number of grades (4) / number of profiles completed) *50%</p><p class="after">(Number of grades with a validated profile ÷ 4 grades) × 100.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="elementary">
+    <div class="area-head"><h3>Elementary</h3><span class="tests">Cambridge Progression Tests · Pruebas Pensar · tamizajes</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Evaluación muy completa: resultados por stage y asignatura, con la variación en puntos porcentuales (Science Stage 4 +19; Math Stage 5 +33).</li><li>El primer indicador ya es una fórmula: Good, High u Outstanding ÷ total × 100.</li><li>Usa pruebas externas e internas: Progression Tests, Pruebas Pensar y tamizajes.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>“Improve students’ results in progression tests” es un resultado; nombrar las habilidades.</li><li>Dos metas sin cifra (“steady progress”, “increase the number”) y sin línea base por stage.</li><li>La meta de Pensar dice 80% en Advanced, pero la evaluación reporta Advanced o Satisfactory, y por asignatura: definir cuál se mide.</li><li>Tamizajes: el indicador son fuentes (“results”, “logs”), no una fórmula; y la fecha (agosto) no coincide con el periodo (febrero–noviembre).</li><li>Responsable “All the teachers”; la fila de Pensar no tiene responsable.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de Progression Tests</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Improve students’ results in progression tests.</p><p class="after">Strengthen the Maths, Science and English skills assessed in the Cambridge Progression Tests, Stages 3 to 5.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Students show steady progress and increase their test results compared to 2025.</p><p class="after">By June [year], English Stage 4 rises from 0% to [__]% and Maths Stages 3 and 4 from [__]% to [__]% at Good or above; Science Stage 4 (71%) and Maths Stage 5 (75%) stay at that level or higher.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Comparison between 2025 and 2026 progression test results. No. of students in good, high and outstanding / total × 100.</p><p class="after">(Students at Good, High or Outstanding ÷ students tested) × 100, by stage and subject; this year − last year in percentage points.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="frances">
+    <div class="area-head"><h3>Francés</h3><span class="tests">DELF A2 · B1 · B2 · DALF C1 · IGCSE</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Resultados DELF por competencia, año contra año.</li><li>Metas IGCSE con cifras (100% entre A* y C).</li><li>Evaluación detallada de lo que funcionó y lo que no.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>El formato no tiene columna de meta y agrega “Pourquoi”; usar las 6 columnas comunes.</li><li>Varios objetivos son proyectos (renovación del espacio, Coupe Francophone) sin meta ni indicador de aprendizaje.</li><li>“Maintenir les résultats” sin cifra.</li><li>Quitar los nombres de estudiantes del documento.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de producción DELF B1 y B2</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Maintenir les résultats par compétences pour les Delf B1 et B2.</p><p class="after">Renforcer la production écrite et orale des élèves qui présentent le DELF B1 et B2.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">(Sin columna de meta.)</p><p class="after">Session avril [année] : note moyenne en PO du B2 de 14,66 à [__]/25 ; PE et PO du B1 ≥ [16]/25.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Resultados de la sesión 2025 escritos como indicador.</p><p class="after">Note moyenne par compétence (PE, PO) de la session − note moyenne de la session précédente.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="lengua">
+    <div class="area-head"><h3>Lengua Castellana</h3><span class="tests">Saber 11° · PreSaber · simulacros · IGCSE 0502</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Diagnóstico con varias fuentes: PreSaber, simulacros y Saber 3°, 5°, 7° y 9°.</li><li>Meta IGCSE clara: 90% entre A* y C.</li><li>Acciones de nivelación con umbrales de puntaje.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Metas en la columna ¿Qué? (“Obtener un puntaje de 65…”, “Tener el 80%…”).</li><li>La meta de Saber no cuadra: “subir 2 puntos… a 70 (68,3)”.</li><li>La columna de indicador tiene resultados y enlaces, sin fórmula.</li><li>Filas con responsable vacío o “durante todo el año”.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de Saber 11° Lectura Crítica</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Subir 2 puntos en el resultado de las Pruebas Saber 11° a 70 puntos. (68.3)</p><p class="after">Fortalecer la comprensión lectora inferencial y crítica de las estudiantes de 12°, evaluada en Lectura Crítica de Saber 11°.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Obtener un puntaje 70 puntos.</p><p class="after">En Saber 11° de [fecha], el promedio de Lectura Crítica pasa de 65 (2026) a [67] puntos.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">En Lectura Crítica el resultado fue de 65 puntos. No se cumple la meta.</p><p class="after">Promedio del colegio en Lectura Crítica (ICFES) − promedio del año anterior. Proceso: promedio de cada simulacro frente al anterior.</p></div>
+    </div>
+    <p class="note">El resultado de 65 puntos es la evaluación del año; va en la columna Evaluación y se convierte en la línea base del plan nuevo.</p>
+  </article>
+
+  <article class="area" id="dyt">
+    <div class="area-head"><h3>Design &amp; Technology</h3><span class="tests">IGCSE 0445 · 0417 · 0478</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Metas con cifra y fecha: 100% de unidades alineadas, 80% en nivel “meeting”, 67% por encima de C.</li><li>Usa el promedio nacional como referente (0478).</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>El ¿Qué? es un título (“IGCSE D&amp;T (0445) Implementation”), no un objetivo.</li><li>El indicador solo tiene etiquetas vacías (“Completion Rate:”).</li><li>“2025 and onwards” no permite hacer seguimiento.</li><li>Evaluación vacía.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila de IGCSE D&amp;T 0445</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">1. IGCSE Design &amp; Technology (0445) Implementation</p><p class="after">Implement the IGCSE D&amp;T 0445 syllabus so students develop design-thinking and prototyping skills.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">100% of units aligned by Term 3; at least 80% of students at meeting level.</p><p class="after">Sin cambio en las cifras; agregar la línea base de este año en las evaluaciones de D&amp;T.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Curriculum Alignment: · Student Achievement: · Teacher Development:</p><p class="after">(Units aligned ÷ total units) × 100. (Students at meeting or above ÷ students assessed) × 100.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="educacion-fisica">
+    <div class="area-head"><h3>Educación Física</h3><span class="tests">Evaluaciones motrices internas · retos · torneos</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>Indicadores escritos como fórmula.</li><li>Fechas concretas para las evaluaciones motrices.</li><li>Tiene una evaluación motriz propia que sirve como prueba interna.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Metas e indicadores miden cumplimiento (evaluaciones o retos realizados ÷ planeados), no mejora de las estudiantes.</li><li>No hay línea base de la condición física.</li><li>Los torneos no tienen meta de participación.</li><li>Evaluación vacía.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila del estado físico motriz</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Mejorar el estado físico motriz… detectando aquellos con capacidades superiores y con dificultades motoras.</p><p class="after">Mejorar la condición física y motriz de las estudiantes de preescolar, 5° y 9°.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">100% de evaluaciones planeadas y ejecutadas…</p><p class="after">A junio de [año], el [__]% de las estudiantes evaluadas mejora su resultado entre la primera y la segunda evaluación motriz.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Total de intervenciones realizadas / total planeadas × 100.</p><p class="after">(N.º de estudiantes que mejoran entre la evaluación 1 y la 2 ÷ N.º de evaluadas) × 100.</p></div>
+    </div>
+  </article>
+
+  <article class="area" id="artes">
+    <div class="area-head"><h3>Artes</h3><span class="tests">Sin prueba externa · eventos y concursos</span></div>
+    <div class="cols">
+      <div><p class="label">Fortalezas</p><ul><li>La tabla 2025–2026 es mucho más clara que la de años anteriores.</li><li>La evaluación reporta % de cumplimiento (2 de 3 eventos; 5 colegios).</li><li>Fechas por etapa en el concurso de arte digital.</li></ul></div>
+      <div><p class="label">Qué ajustar</p><ul><li>Las metas son propósitos (“Fomentar la creatividad digital…”), sin cifra.</li><li>El documento mezcla filas de 2023–2024 con las actuales.</li><li>Todos los objetivos son de gestión (eventos, currículo); falta uno de aprendizaje medido con una rúbrica común.</li></ul></div>
+    </div>
+    <div class="rewrite">
+      <p class="rw-title">Ejemplo: fila del concurso intercolegial de arte digital</p>
+      <div class="rw-head"><span>Columna</span><span>Hoy</span><span>Propuesta</span></div>
+      <div class="rw-row"><span class="k">Objetivo</span><p class="before">Crear e implementar un concurso intercolegial de arte digital…</p><p class="after">Fomentar la creatividad digital de las estudiantes de Middle y High mediante un concurso intercolegial de arte digital.</p></div>
+      <div class="rw-row"><span class="k">Meta</span><p class="before">Fomentar la creatividad digital, el pensamiento crítico y el intercambio artístico…</p><p class="after">En marzo de [año] participan al menos 5 colegios y [__] obras de estudiantes del colegio.</p></div>
+      <div class="rw-row"><span class="k">Indicador</span><p class="before">Número de colegios participantes. Cantidad de obras recibidas. Retroalimentación…</p><p class="after">N.º de colegios participantes frente a la meta; N.º de obras propias; % de participantes satisfechos (encuesta).</p></div>
+    </div>
+    <p class="note">Para un objetivo de aprendizaje: una rúbrica común de proceso creativo aplicada al inicio y al final del año, con meta de % de estudiantes en nivel alto o superior.</p>
+  </article>
+</section>
+
+<section id="resultados">
+  <div class="sec-head">
+    <p class="eyebrow">Según las pruebas externas · Saber 11°, IGCSE y Checkpoint</p>
+    <h2>Ajustes por asignatura según los resultados</h2>
+    <p>Para cada asignatura: qué pasó con sus metas 2025–2026, qué debe ajustar en el plan y las metas propuestas para 2026–2027 con la línea base real. “Antes” es el año 2024–2025.</p>
+  </div>
+  <nav class="jump" aria-label="Ir a una asignatura">
+    <a href="#res-mat">Matemáticas</a><a href="#res-cien">Ciencias</a><a href="#res-soc">Sociales</a><a href="#res-len">Lengua</a><a href="#res-dyt">D&amp;T / ICT</a><a href="#res-ele">Elementary</a><a href="#res-ing">Inglés</a><a href="#res-fra">Francés</a>
+  </nav>
+  <div class="callout"><b>Saber 11° 2026, 66 estudiantes.</b> Promedio global 331,7 (2025: 340). Bajaron Matemáticas (−4,7), Lectura Crítica (−2,3), Ciencias (−0,5) y Sociales (−0,3); subió Inglés (+1,1). Los niveles se calcularon con los rangos del ICFES a partir de los puntajes individuales; conviene confirmarlos con el reporte oficial.</div>
+  <article class="area" id="res-mat">
+    <div class="area-head"><h3>Matemáticas</h3><span class="priority p-high">Prioridad alta</span></div>
+    <p class="note">Saber 11° · IGCSE 0580 · Checkpoint · Cayó en Saber y en IGCSE; mejoró en Lower Secondary Checkpoint.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>Saber 11° Matemáticas</td><td>+1 a +2 puntos (desde 71)</td><td>70,6</td><td>65,9</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>Saber 11° · % en nivel 4</td><td>—</td><td>51%</td><td>26%</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>IGCSE 0580 · % A*–C</td><td>60% (o 70%)</td><td>34,0%</td><td>21,5%</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>Brecha con el mundo (IGCSE)</td><td>de 28 a 20 puntos</td><td>28,3</td><td>39,8</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>Lower Secondary Checkpoint</td><td>—</td><td>2,1</td><td>2,5</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>Primary Checkpoint</td><td>2,4</td><td>2,3 (2024, Number)</td><td>sin dato 2025</td><td><span class="chip none">Sin dato</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Cambiar la meta de Saber: la línea base es 65,9 (marzo 2026), no 71. Es el promedio más bajo desde 2017.</li><li>Agregar una meta de nivel 4: bajó de 51% a 26%. El problema no es el piso (98% está en niveles 3–4) sino el desempeño alto.</li><li>Bajar la meta de IGCSE 0580 de 60% a una alcanzable: 35% es el nivel de 2024 y el de Colombia. Dejar una sola cifra en meta e indicador.</li><li>Analizar por paper y por tema por qué cayó IGCSE (0% en A*, 1,5% en A o más) y revisar cuántas estudiantes presentan Extended y cuántas Core.</li><li>Agregar una fila de Lower Secondary Checkpoint: es donde más mejoró (2,1 → 2,5) y sirve como indicador temprano. Prioridad: Number (2,2).</li><li>Llenar la columna Evaluación con estos resultados.</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>Saber 11°: promedio de 68 y 40% en nivel 4 (marzo 2027).</p><p>IGCSE 0580: 35% entre A* y C; brecha con el mundo ≤ 30 puntos (nov. 2026).</p><p>Lower Secondary Checkpoint: 2,8 (2026).</p></div>
+  </article>
+  <article class="area" id="res-cien">
+    <div class="area-head"><h3>Ciencias Naturales</h3><span class="priority p-high">Prioridad alta</span></div>
+    <p class="note">Saber 11° · IGCSE Environmental Management · Checkpoint · La brecha con el mundo en IGCSE se amplió; Lower Secondary alcanzó el nivel mundial.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>Saber 11° Ciencias Naturales</td><td>66</td><td>65,3</td><td>64,8</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>Saber 11° · % en nivel 4</td><td>—</td><td>25%</td><td>21%</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>IGCSE Environmental · % A*–C</td><td>—</td><td>52,8%</td><td>45,5%</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>Brecha con el mundo (IGCSE)</td><td>de −11 a −9</td><td>−11,5</td><td>−17,1</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>Lower Secondary Checkpoint</td><td>—</td><td>2,4</td><td>3,1</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>Primary Checkpoint</td><td>brecha −7</td><td>2,1 Chem/Phys (2024)</td><td>sin dato 2025</td><td><span class="chip none">Sin dato</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Mantener la meta de 66 en Saber, pero escribir la línea base real (64,8) y agregar el nivel 4 (21%).</li><li>Corregir el signo de la brecha en IGCSE: % del colegio − % mundial. Hoy es −17,1, no −11.</li><li>Revisar la cobertura del syllabus de Environmental Management antes de noviembre: solo 1,5% llegó a A o más.</li><li>Agregar Lower Secondary Checkpoint como fortaleza a sostener (3,1, igual al promedio mundial) y priorizar Chemistry (2,7).</li><li>Pedir el reporte de Primary Checkpoint 2025 para fijar la meta de Primary.</li><li>Llenar la columna Evaluación.</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>Saber 11°: promedio de 66 y 28% en nivel 4.</p><p>IGCSE Environmental: brecha con el mundo ≤ −10 (≈ 53% entre A* y C).</p><p>Lower Secondary Checkpoint: mantener ≥ 3,1 y Chemistry ≥ 3,0.</p></div>
+  </article>
+  <article class="area" id="res-soc">
+    <div class="area-head"><h3>Ciencias Sociales</h3><span class="priority p-high">Prioridad alta</span></div>
+    <p class="note">Saber 11° Sociales · IGCSE Global Perspectives · No entregó plan y es la materia más baja en Saber.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>Saber 11° Sociales y Ciudadanas</td><td>sin plan</td><td>63,3</td><td>63,0</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>Saber 11° · % en nivel 4</td><td>sin plan</td><td>23%</td><td>20%</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>IGCSE Global Perspectives · % A*–C</td><td>sin plan</td><td>69,8%</td><td>75,8%</td><td><span class="chip none">Sin meta</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Entregar el plan de mejoramiento 2026–2027.</li><li>Priorizar Saber: 63,0 es el promedio más bajo de las cinco pruebas y 8 estudiantes quedaron en niveles 1–2.</li><li>Sostener Global Perspectives (75,8%, sobre el mundo: 72,1%) y buscar notas altas: 0% en A*.</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>Saber 11°: promedio de 65 y nivel 4 ≥ 25%.</p><p>IGCSE Global Perspectives: ≥ 76% entre A* y C y al menos 5% en A*.</p></div>
+  </article>
+  <article class="area" id="res-len">
+    <div class="area-head"><h3>Lengua Castellana</h3><span class="priority p-mid">Prioridad media</span></div>
+    <p class="note">Saber 11° Lectura Crítica · IGCSE 0502 · IGCSE quedó a 0,6 de la meta; Lectura Crítica bajó.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>Saber 11° Lectura Crítica</td><td>70</td><td>67,6</td><td>65,3</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>Saber 11° · % en nivel 4</td><td>—</td><td>58%</td><td>59%</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>IGCSE 0502 · % A*–C</td><td>90%</td><td>88,5%</td><td>89,4%</td><td><span class="chip fix">Parcial</span></td></tr><tr><td>IGCSE 0502 · % A o más</td><td>—</td><td>26,9%</td><td>30,3%</td><td><span class="chip none">Sin meta</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Cambiar la meta de Saber: la línea base es 65,3. La meta de 70 nunca se ha alcanzado (máximo histórico: 68).</li><li>Nivelar a las 3 estudiantes que quedaron en niveles 1–2 de Lectura Crítica.</li><li>Mantener la meta de IGCSE entre A* y C (89,4%, muy por encima del mundo: 78%) y agregar una meta de nota alta: solo 3% obtuvo A*.</li><li>Sacar las metas de la columna ¿Qué? y escribir el indicador como fórmula.</li><li>Llenar la columna Evaluación.</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>Saber 11°: promedio de 67 y nivel 4 ≥ 62%.</p><p>IGCSE 0502: 92% entre A* y C y 35% en A o más.</p></div>
+  </article>
+  <article class="area" id="res-dyt">
+    <div class="area-head"><h3>Design &amp; Technology / ICT</h3><span class="priority p-mid">Prioridad media</span></div>
+    <p class="note">IGCSE ICT 0417 · Computer Science 0478 · Quedó 13 puntos debajo de su meta, aunque sobre el promedio mundial.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>IGCSE ICT · % A*–C</td><td>67%</td><td>56,6%</td><td>53,8%</td><td><span class="chip miss">No cumplida</span></td></tr><tr><td>ICT vs. mundo (puntos)</td><td>—</td><td>−0,9</td><td>+0,6</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>Computer Science 0478</td><td>≥ promedio nacional</td><td>—</td><td>sin dato separado</td><td><span class="chip none">Sin dato</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Ajustar la meta de ICT a un paso intermedio: 60%, manteniéndose sobre el promedio mundial.</li><li>Pedir el reporte separado de Computer Science 0478; el consolidado lo mezcla con ICT.</li><li>Escribir las fórmulas de los indicadores (hoy son etiquetas vacías).</li><li>Llenar la columna Evaluación.</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>IGCSE ICT: 60% entre A* y C, por encima del promedio mundial.</p></div>
+  </article>
+  <article class="area" id="res-ele">
+    <div class="area-head"><h3>Elementary (Primary Checkpoint)</h3><span class="priority p-mid">Prioridad media</span></div>
+    <p class="note">Primary Checkpoint · Progression Tests · Pensar · Los archivos no traen los resultados de Primary Checkpoint 2025.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>Primary Checkpoint Maths</td><td>—</td><td>2,3 Number (2024)</td><td>sin dato 2025</td><td><span class="chip none">Sin dato</span></td></tr><tr><td>Primary Checkpoint Science</td><td>—</td><td>2,1 Chem/Phys (2024)</td><td>sin dato 2025</td><td><span class="chip none">Sin dato</span></td></tr><tr><td>Primary Checkpoint ESL</td><td>—</td><td>3,3 (2023)</td><td>sin dato 2025</td><td><span class="chip none">Sin dato</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Pedir el reporte de Primary Checkpoint 2025 y agregarlo como fila del plan, junto con Progression Tests.</li><li>Coordinar con Matemáticas y Ciencias: en Primary los strands más bajos son Number (2,3), Chemistry y Physics (2,1), lejos del mundo (3,2–3,3).</li><li>Mantener las metas de Progression Tests por stage y asignatura (ver la ficha de Elementary).</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>Primary Checkpoint: fijar metas por strand cuando llegue el reporte 2025.</p></div>
+  </article>
+  <article class="area" id="res-ing">
+    <div class="area-head"><h3>Inglés</h3><span class="priority p-low">Prioridad baja</span></div>
+    <p class="note">Saber 11° · IGCSE ESL · Checkpoint · Cumplió sus metas de Saber e IGCSE.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>Saber 11° Inglés</td><td>+0,2</td><td>84,3</td><td>85,4</td><td><span class="chip ok">Cumplida</span></td></tr><tr><td>Saber 11° · puntajes de 100</td><td>+6 puntos</td><td>11%</td><td>17%</td><td><span class="chip ok">Cumplida</span></td></tr><tr><td>IGCSE ESL · % A*–C</td><td>+2 puntos</td><td>86,5%</td><td>93,9%</td><td><span class="chip ok">Cumplida</span></td></tr><tr><td>Lower Secondary · Use of English</td><td>—</td><td>3,5</td><td>3,9</td><td><span class="chip none">Sin meta</span></td></tr><tr><td>Primary · Use of English</td><td>+0,1</td><td>3,2 (2024)</td><td>sin dato 2025</td><td><span class="chip none">Sin dato</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Subir las metas: las de 2025–26 quedaron por debajo del resultado.</li><li>Unificar las dos hojas del plan en una sola versión.</li><li>Escribir las líneas base con número (ya se conocen).</li><li>Agregar una meta de A* en IGCSE ESL: bajó de 25% a 22,7%.</li><li>Pedir el reporte de Primary Checkpoint 2025 para evaluar la meta de Use of English.</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>Saber 11°: promedio ≥ 86, 85% en B2 y ≥ 17% de puntajes perfectos.</p><p>IGCSE ESL: ≥ 93% entre A* y C y 25% en A*.</p><p>Use of English: Primary ≥ 3,3; Lower Secondary ≥ 3,9.</p></div>
+  </article>
+  <article class="area" id="res-fra">
+    <div class="area-head"><h3>Francés</h3><span class="priority p-low">Prioridad baja</span></div>
+    <p class="note">IGCSE French · DELF · Subió casi 6 puntos en IGCSE.</p>
+    <div class="table-scroll"><table class="res-table"><tr><th>Prueba</th><th>Meta 2025–26</th><th>Antes</th><th>2025–26</th><th>Estado</th></tr><tr><td>IGCSE French · % A*–C</td><td>100%</td><td>88,0%</td><td>93,9%</td><td><span class="chip fix">Parcial</span></td></tr><tr><td>IGCSE French · % A*</td><td>15 estudiantes</td><td>3,8%</td><td>22,7% (≈ 15)</td><td><span class="chip ok">Cumplida</span></td></tr></table></div>
+    <div class="adjust"><p class="label">Ajustes que debe hacer en el plan</p><ol><li>Verificar el dato de A*: el consolidado indica 22,7% (unas 15 de 66), pero la evaluación del área dice que bajó a 10.</li><li>Ajustar la meta de 100% a una exigente pero alcanzable: 96%.</li><li>Pasar el plan al formato de 6 columnas, con columna de meta.</li><li>Agregar metas por competencia del DELF, con prioridad en la comprensión oral del B1 (bajó de 16,14 a 14,28).</li></ol></div>
+    <div class="newgoal"><p class="label">Metas propuestas 2026–2027</p><p>IGCSE French: 96% entre A* y C y ≥ 22,7% en A*.</p><p>DELF B1: comprensión oral ≥ 16/25.</p></div>
+  </article>
+</section>
+
+<footer>Fuente: los 12 planes de mejoramiento 2025–2026 entregados por las áreas y los consolidados de Saber 11° (2025 y 2026), IGCSE (2017–2025) y Checkpoint (2016–2025). Las propuestas son modelos de redacción; cada área define sus cifras con su propio diagnóstico.</footer>
+</div>
+
+</html>
